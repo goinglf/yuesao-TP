@@ -1,0 +1,59 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/* KISSY CSS Reset */
+body,h1,h2,h3,h4,h5,h6,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,span,i,ul,a,em,img,textarea,select{margin:0;padding:0;}
+*{padding:0; margin:0; list-style:none;}
+body,button,input,select,textarea,font {font-size:12px;}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea {font-size:100%;outline:none;}
+label,input,select {vertical-align:middle;}
+address,cite,em {font-style:normal;}
+fieldset{cursor:pointer;}
+img{border:none;}
+ul,ol {list-style:none;}
+table {border-collapse:collapse;border-spacing:0;}
+sub {vertical-align:text-bottom;}
+sup {position:relative;top:-1px;left:2px;font:11px/normal tahoma;vertical-align:text-top;}
+small {font-size:12px;}
+legend {color:#333;}
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}
+a{ outline:none;}
+/* color */
+
+a{text-decoration:none;}
+ul,li{padding:0; margin:0;}
+
+body{behavior:url("csshover.htc"); font-family:"microsoft yahei";}
+input,button,select,textarea{ font-family:"microsoft yahei";}
+
+/*清除浮动*/
+.clearfix:before,.clearfix:after{content:"."; display:block; visibility:hidden; height:0; line-height:0; font-size:0;}
+.clearfix:after{clear:both;}
+.clearfix{zoom:1;}
+.clear{clear:both; height:0;overflow:hidden;}
+
+/*wrap*/
+.wrap{ display:block; margin:0 auto;}
+/*wrap*/
+
+/*header*/
+.header{width:100%; display:inline-block;}
+/*header*/
+
+/*footer*/
+.footer{width:100%; display:inline-block;}
+/*footer*/
+
+/*float*/
+.fl{float:left;}
+.fr{float:right;}
+
+/*外边距*/
+.mT5{margin-top:5px;}
+/*内边距*/
+.pM5{padding-bottom:5px;}
+/*css3*/
+/*背景渐变*/
+{transition: all 0.3s ease-out 0s;-webkit-transition: all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-o-transition: all 0.3s ease-out 0s;}
+/*透明度*/
+input[type=submit]:hover{ opacity:0.7; -moz-opacity:0.7;filter:alpha(opacity=70);}
+/*公用*/

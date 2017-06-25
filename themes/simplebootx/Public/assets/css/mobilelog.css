@@ -1,0 +1,91 @@
+.log_content1{
+	height:29px;
+	line-height:29px;
+	 overflow:hidden;
+}
+.log_content1_left{font-size:12px;color:#333;}
+.log_content1_right{float:right;font-size:12px;color:#333;}
+.log_content1_right a{color:#333;}
+a:hover, a:visited,a:active {
+   text-decoration: none;
+   color: #333;
+}
+.log_content2{background-color:#ffb696;width:100%;}
+.log_content2_img{margin:15px 0;}
+.log_content2_nav li{float:right;list-style-type:none;width:20%;text-align: center;border-right:1px solid #fff;margin:40px 0;font-size:20px;}
+.log_content2_nav a{color:#fff;}
+.log_content2_nav a:hover{font-weight: bold;border-bottom:1px solid #fff;padding-bottom:10px;}
+.active a{font-weight: bold;border-bottom:1px solid #fff;padding-bottom:10px;}
+.log_bgcolor{background-color:#fef6ed;}
+.g-footer{
+    background-color: white;
+    height: 272px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333333;
+}
+.g-footer__wrap{
+    width: 1000px;
+    height: 72px;
+    margin: 0 auto;
+    display: flex;
+}
+.g-footer__a, .g-footer__c{
+    flex: 1;
+}
+.g-footer__text{
+    margin: 0;
+    padding-left: 62px;
+    font-size: 14px;
+}
+.g-footer__b{
+    width: 85px;
+    justify-content: center;
+    display: flex;
+}
+.g-footer__logo{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.g-footer__slogan{
+    font-size: 20px;
+    padding-left: 36px;
+    margin-top: 20px;
+}
+.log_in{padding:110px 44px;}
+.f{background-color:#fff;height:462px;border-radius: 10px;}
+.log_in_title{background-color:#fff;;width:500px;padding:15px 0;border-bottom:2px solid #fef6ed;border-radius: 10px 10px 0 0;}
+.log_in_title a{width:250px;text-align: center;font-size:20px;color:#000;float: left; height:20px;line-height: 20px;margin:0;cursor:pointer;}
+.log_in_title .rborder{border-right:1px solid #e2e2e2;}
+.log_in_title .active span{border-bottom: 3px solid #ffb696;height:37px;display: inline-block;}
+
+.f__tab{
+	display: none;
+	margin:60px 50px 0 50px;
+}
+.f__tab input{
+	height:50px;line-height: 50px;color:#999;font-size:16px;border: 1px solid #ddd; padding: 7px 14px 9px; transition: 0.4s;outline: none;-webkit-appearance: none;
+}
+.effect-8 ~ .focus-border:before,
+.effect-8 ~ .focus-border:after{content: ""; position: absolute; top: 0; left: 0; width: 0; height: 2px; background-color: #ffb696; transition: 0.3s;}
+.effect-8 ~ .focus-border:after{top: auto; bottom: 0; left: auto; right: 0;}
+.effect-8 ~ .focus-border i:before,
+.effect-8 ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #ffb696; transition: 0.4s;}
+.effect-8 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0;}
+.effect-8:focus ~ .focus-border:before,
+.effect-8:focus ~ .focus-border:after{width: 100%; transition: 0.3s;}
+.effect-8:focus ~ .focus-border i:before,
+.effect-8:focus ~ .focus-border i:after{height: 100%; transition: 0.4s;}
+.col-4{position: relative;margin-top:20px;width:61%;display: inline-block;}
+.col-3{position: relative;}
+.col-5{position: relative;margin-top:20px;width:100%;}
+.f__tab .phonenumber, .code{width:100%;}
+.f__tab .get_code{display: inline-block;margin-left:10px;background-color:#ddd;border:1px solid #ccc;height:50px;line-height: 50px;width:142px;text-align: center;font-size:16px;color:#999;}
+.f__tab .fc_reg{height:54px;line-height: 54px;}
+.f__tab .fc_reg a{color:#666;font-size:14px;font-weight: normal;padding-bottom:0;}
+.f__tab button{background-color:#ffb696;border:1px solid #ddd;color:#fff;font-size:20px;width:100%;height:50px;line-height:50px;outline: none;-webkit-appearance: none;}
+.f__tab.active{
+	display: block;
+}

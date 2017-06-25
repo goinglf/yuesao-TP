@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="__TMPL__Public/assets/css/lib/mdl/material.min.css" rel="stylesheet"/>
+    <script src="__TMPL__Public/assets/js/lib/mdl/material.min.js"></script>
+    <link href="__TMPL__Public/assets/css/site/header.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/site/footer.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/site/user/footprint.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/site/common/base.css" rel="stylesheet"/>
+    <title>浏览历史</title>
+  </head>
+  <body>
+  <div class="topmost">
+    <div class="topmost__row"><span class="topmost__left">欢迎来到世纪母婴！</span>
+      <div class="topmost__right">
+          <span class="topmost__text">
+            欢迎，{$_SESSION['user']['user_login'] |default='游客'}</span>
+        <a class="topmost__link" href="{:U('user/center/index')}">
+          <span class="topmost__text">个人中心</span></a>
+        <if condition=" $_SESSION['user']['user_login']  neq '' ">
+          <a class="topmost__link" href="{:U('user/index/logout')}"><span class="topmost__text">退出登录</span></a>
+          <else/>
+          <a class="topmost__link" href="{:leuu('user/login/index')}"><span class="topmost__text">登录</span></a>
+        </if>
+      </div>
+    </div>
+  </div>
+  <header class="g-header">
+    <div class="g-header__row"><img class="g-header__logo" src="__TMPL__Public/assets/img/header/logo-long.png" alt=""/>
+      <nav class="g-nav">
+        <a class="g-nav__link " href="index.html">
+          <span class="g-nav__text">首页</span></a>
+        <a class="g-nav__link" href="{:U('yuesao/list/index')}"><span class="g-nav__text">月嫂展示&预约</span></a>
+        <a class="g-nav__link" href="{:U('yuesao/list/all_list')}"><span class="g-nav__text">智能匹配月嫂</span></a>
+        <a class="g-nav__link" href="{:U('Ourinfo/index/about')}"><span class="g-nav__text">关于我们</span></a>
+        <a class="g-nav__link" href="{:U('Ourinfo/index/contact')}"><span class="g-nav__text">联系我们</span></a>
+      </nav>
+    </div>
+  </header>
+    <div class="main" style="padding-bottom: 80px;">
+      <div class="container">
+        <div class="breadcrumb"><a class="breadcrumb__link" href="">首页</a><span class="breadcrumb__seperator">&gt;</span><a class="breadcrumb__link" href="">个人中心</a><span class="breadcrumb__seperator">&gt;</span><a class="breadcrumb__link" href="">浏览历史</a></div>
+        <div class="pannel-container">
+          <aside class="row-1">
+            <div class="stupid pannel">
+              <php>$avatar=$_SESSION['user']['avatar']</php>
+              <if condition="empty($avatar)">
+                <img class="stupid__avatar" src="__TMPL__Public/assets/img/headicon_128.png" class="headicon"/>
+                <else/>
+                <img class="stupid__avatar" src="{:sp_get_user_avatar_url($avatar)}" class="headicon"/><br>
+              </if>
+              <h5 class="stupid__nickname">{$user_login|default='未填写'} <span class="stupid__vip-grade">V<sub>0</sub></span></h5>
+            </div>
+            <ul class="menu-list pannel">
+              <li class="menu"><a class="menu__link" href="">我的订单</a></li>
+              <li class="menu"><a class="menu__link" href="">我的收藏</a></li>
+              <li class="menu menu--active"><a class="menu__link" href="">浏览历史</a></li>
+            </ul>
+          </aside>
+          <div class="row-2">
+            <div class="view-list">
+              <div class="view">
+                <div class="view__datetime-wrap"><img class="view__icon" src="../assets/img/user/icon-clock.png" alt=""/><span class="view__datetime">2017-7-29</span></div>
+                <div class="view__row">
+                  <foreach name="ys" item="v">
+                    <div class="v-item">
+                      <div class="v-item__attachment">
+                        <php>$smeta=json_decode($v['avatar'],true);</php>
+                        <empty name="smeta.thumb">
+                          <img class="v-item__img" src="__TMPL__Public/assets/img/user/nurse.png" alt=""/>
+                          <else/>
+                          <img class="v-item__img" src="{:sp_get_image_preview_url($smeta['thumb'])}" >
+                        </empty>
+                      </div>
+                      <div class="v-item__main pannel" style="border-radius:6px;">
+                        <div class="v-item__body">
+                          <span class="v-item__text">{$v.name}</span>
+                          <span class="v-item__text v-item__text--em">{$v.level}星级月嫂</span>
+                          <span class="v-item__text">价格：{$v.price}元/26天</span>
+                          <span class="v-item__text">{$v.age}岁/{$v.address}/{$v.experience}年月嫂经验</span>
+                        </div>
+                        <div class="v-item__footer">
+                          <p class="v-item__comment">{$v.introduce}</p>
+                          <div class="v-item__actions"><a class="v-item__action v-item__action--em" href="{:U('yuesao/list/ys_info',array('id'=>$v['yid']))}">+去看看</a>
+                            <a class="v-item__action" href="{:U('User/favorite/del_mark',array('id'=>$v['id']))}">删除</a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </foreach>
+                </div>
+              </div>
+            </div>
+            <div class="pagnation pannel"><a class="pagnation__p" href="">01</a><a class="pagnation__p" href="">02</a><a class="pagnation__nav" href=""><img src="../assets/img/user/icon-arrow-left.png" alt=""/></a><a class="pagnation__current" href="">03</a><a class="pagnation__nav" href=""><img src="../assets/img/user/icon-arrow-right.png" alt=""/></a><a class="pagnation__p" href="">04</a><a class="pagnation__p" href="">05</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="g-footer">
+      <div class="g-footer__wrap">
+        <div class="g-footer__a">
+          <p class="g-footer__text">公司地址：杭州市拱墅区</p>
+          <hr style="margin: 10px 0;"/>
+          <p class="g-footer__text">联系电话：0571-8888888　　　版权所有：XXX</p>
+        </div>
+        <div class="g-footer__b"><img class="g-footer__logo" src="__TMPL__Public/assets/img/logo.png" alt=""/></div>
+        <div class="g-footer__c">
+          <hr style="margin-top:4px;"/>
+          <p class="g-footer__slogan">“以敬天之心事人，以求道之心做事”</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

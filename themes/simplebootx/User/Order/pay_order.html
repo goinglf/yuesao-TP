@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>支付</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="__TMPL__Public/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/pay.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/base.css" rel="stylesheet"/>
+    <script src="__TMPL__Public/assets/js/lib/jquery/jquery.min.js"></script>
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="log_bgcolor">
+    <div class="container">
+        <div class="log_content1">
+            <div class="col-md-8"> <span class="pull-left log_content1_left">欢迎来到世纪母婴！</span> </div>
+            <div class="col-md-4">
+                <div class="nav pull-right log_content1_right"> <span>欢迎，
+				{$_SESSION['user']['user_login'] |default='游客'}
+			</span>
+                    <a href="{:U('user/center/index')}">　|　个人中心　|　</a>
+                    <if condition=" $_SESSION['user']['user_login']  neq '' ">
+                        <a href="{:U('user/index/logout')}">退出登录</a>
+                        <else/>
+                        <a href="{:leuu('user/login/index')}">登录</a>
+
+                    </if>
+            </div>
+        </div>
+    </div>
+    <div class="log_content2">
+        <div class="container">
+            <div class="col-md-3 pull-left"> <img src="__TMPL__Public/assets/img/logo2.png" width="279px" height="69px" class="log_content2_img"> </div>
+            <div class="pull-right col-md-9">
+                <ul class="log_content2_nav">
+                    <li style="border:none;width:12%;text-align: right;"><a href="{:U('Ourinfo/index/contact')}">联系我们</a></li>
+                    <li><a href="{:U('Ourinfo/index/about')}">关于我们</a></li>
+                    <li><a href="{:U('yuesao/list/all_list')}">智能匹配月嫂</a></li>
+                    <li><a href="{:U('yuesao/list/index')}">月嫂展示&预约</a></li>
+                    <li style="width: 12%;" ><a href="index.html">首页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="log_bgcolor">
+        <div class="container">
+            <foreach name="order" item="v">
+            <div class="oder_toplist">
+                <span>{$v.create_at}</span>
+                <span class="pd_left">订单号：{$v.order_name}</span>
+            </div>
+            <div class="oder_content">
+                <div class="oder_line"></div>
+                <img src="__TMPL__Public/assets/img/pay/1.png" class="oder_head" style="margin-top: 35px">
+                <ul class="oder_ul1">
+                    <li class="oder_li1">{$v.name}</li>
+                    <php>$v['sum']=$v['balance']+$v['deposit'];</php>
+                    <li class="oder_li2">¥ {$v.sum}</li>
+                    <li class="oder_li3"><a  href="{:U('user/order/order_info',array('id'=>$v['id']))}" style="color: black">订单详情</a></li>
+                    <li class="oder_li4">服务时间：{$v.serve_start|strtr='-','/'}-{$v.serve_end|strtr='-','/'}</li>
+                </ul>
+                <ul class="oder_ul2">
+                    <li class="oder_li1">订单号：{$v.order_name}</li>
+                    <li class="oder_li2">预约月嫂，只需要支付10%定金~</li>
+                    <li class="oder_li3">
+                        <php>$status=array("1"=>L('待付定金'),"2"=>L('待付尾款'));</php>
+                        {$status[$v[order_status]]}合计:¥
+                        <if condition="$v.order_status eq 1 ">
+                           {$v.deposit}
+                        <else/>
+                           {$v.balance}
+                        </if>
+                    </li>
+                </ul>
+
+                <p class="oder_p1">选择支付方式</p>
+                <div class="oder_pay">
+                    <div class="profile-form__radio-wrap" >
+                        <input class="profile-form__radio" type="radio" name="payment" id="alipay"/>
+                        <label class="profile-form__radio-lbl" for="alipay"><img src="__TMPL__Public/assets/img/pay/2.png"></label>
+                        <input style="margin-left:90px;"class="profile-form__radio" type="radio" name="payment" id="wechat"/>
+                        <label class="profile-form__radio-lbl" for="wechat"><img src="__TMPL__Public/assets/img/pay/3.png"></label>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button class="oder_button">支付</button>
+                </div>
+            </div>
+            </foreach>
+        </div>
+    </div>
+</div>
+<footer class="g-footer">
+    <div class="g-footer__wrap">
+        <div class="g-footer__a">
+            <p class="g-footer__text">公司地址：杭州市拱墅区</p>
+            <hr style="margin: 10px 0;"/>
+            <p class="g-footer__text">联系电话：0571-8888888　　　版权所有：XXX</p>
+        </div>
+        <div class="g-footer__b"><img class="g-footer__logo" src="__TMPL__Public/assets/img/logo.png" alt=""/></div>
+        <div class="g-footer__c">
+            <hr style="margin-top:4px;"/>
+            <p class="g-footer__slogan">“以敬天之心事人，以求道之心做事”</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+        <table class="table table-hover table-bordered table-list">
+            <thead>
+            <tr>
+                <th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+                <notempty name="term">
+                    <th width="50">{:L('SORT')}</th>
+                </notempty>
+                <th >ID</th>
+                <th>姓名</th>
+                <th >手机号</th>
+                <th >年龄</th>
+                <!--<th ><a href="{:U('Index/ys_list',array('data'=>'level'))}">星级</a></th>-->
+                <th ><span class="level">星级</span></th>
+                <th >经验</th>
+                <th>照顾宝宝数量</th>
+                <th >价格</th>
+                <th >头像</th>
+                <th >状态</th>
+                <th >操作</th>
+            </tr>
+            </thead>
+            <foreach name="list" item="vo">
+                <tr>
+                    <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.id}" title="ID:{$vo.id}"></td>
+                    <notempty name="term">
+                        <td><input name="listorders[{$vo.tid}]" class="input input-order" type="text" size="5" value="{$vo.listorder}"></td>
+                    </notempty>
+                    <td><b>{$vo.id}</b></td>
+                    <td>
+                        {$vo.name}
+                        <!--<notempty name="term">-->
+                            <!--<a href="{:leuu('portal/article/index',array('id'=>$vo['id'],'cid'=>$term['term_id']))}" target="_blank">{$vo.post_title}</a>-->
+                            <!--<else/>-->
+                           <!---->
+                        <!--</notempty>-->
+                    </td>
+                    <td>{$vo.mobile}</td>
+                    <td>{$vo.age}</td>
+                    <td>{$vo.level}</td>
+                    <td>{$vo.experience}</td>
+                    <td>{$vo.baby_num}</td>
+                    <td>{$vo.price}</td>
+                    <td>
+                        <php>$smeta=json_decode($vo['avatar'],true);</php>
+                        <notempty name="smeta.thumb">
+                            <img src="{:sp_get_image_preview_url($smeta['thumb'])}" style="width: 50px">
+                            <!--<a href="javascript:parent.image_preview_dialog('{:sp_get_image_preview_url($smeta['thumb'])}');">-->
+                                <!--<i class="fa fa-photo fa-fw"></i>-->
+                            <!--</a>-->
+                        </notempty>
+                    </td>
+                    <td>
+                        <notempty name="vo.post_status">
+                            <a data-toggle="tooltip" title="已审核"><i class="fa fa-check" style="color: red"></i></a>
+                            <else/>
+                            <a data-toggle="tooltip" title="未审核"><i class="fa fa-close"></i></a>
+                        </notempty>
+                        <notempty name="vo.istop">
+                            <a data-toggle="tooltip" title="已置顶"><i class="fa fa-arrow-up" style="color: red"></i></a>
+                            <else />
+                            <a data-toggle="tooltip" title="未置顶"><i class="fa fa-arrow-down" ></i></a>
+                        </notempty>
+                        <notempty name="vo.is_recommend">
+                            <a data-toggle="tooltip" title="已推荐"><i class="fa fa-thumbs-up" style="color: red"></i></a>
+                            <else />
+                            <a data-toggle="tooltip" title="未推荐"><i class="fa fa-thumbs-down"></i></a>
+                        </notempty>
+                    </td>
+                    <td>
+                        <a href="{:U('index/edit_ys',array('id'=>$vo['id']))}">{:L('EDIT')}</a> |
+                        <a href="{:U('Index/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+                    </td>
+                </tr>
+            </foreach>
+        </table>

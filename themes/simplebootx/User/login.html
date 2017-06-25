@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="__TMPL__Public/assets/css/bootstrap.css" rel="stylesheet"/>
+	<link href="__TMPL__Public/assets/css/mobilelog.css" rel="stylesheet"/>
+	<script src="__TMPL__Public/assets/js/lib/jquery/jquery.min.js"></script>
+	<script src="__TMPL__Public/assets/js/login/mobilelog.js"></script>
+	<style>
+		@media (min-width: 1200px) {
+			.container {
+				width: 1200px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+<div class="container">
+	<div class="log_content1">
+		<div class="col-md-8"> <span class="pull-left log_content1_left">欢迎来到世纪母婴！</span> </div>
+		<div class="col-md-4">
+			<div class="nav pull-right log_content1_right">
+				<span>欢迎，
+				{$_SESSION['user']['user_login'] |default='游客'}
+			</span> <a href="{:U('user/center/index')}">　|　个人中心　|　</a>
+				<if condition=" $_SESSION['user']['user_login']  neq '' ">
+					<a href="{:U('user/index/logout')}">退出登录</a>
+					<else/>
+					<a href="{:leuu('user/login/index')}">登录</a>
+
+				</if>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="log_content2">
+	<div class="container">
+		<div class="col-md-3 pull-left"> <img src="__TMPL__Public/assets/img/logo2.png" width="279px" height="69px" class="log_content2_img"> </div>
+		<div class="pull-right col-md-9">
+			<ul class="log_content2_nav">
+				<li style="border:none;width:12%;text-align: right;"><a href="{:U('Ourinfo/index/contact')}">联系我们</a></li>
+				<li><a href="{:U('Ourinfo/index/about')}">关于我们</a></li>
+				<li ><a href="{:U('yuesao/list/all_list')}">智能匹配月嫂</a></li>
+				<li ><a href="{:U('yuesao/list/index')}">月嫂展示&预约</a></li>
+				<li style="width: 12%;" ><a href="index.html">首页</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="log_bgcolor">
+	<div class="container">
+		<div class="log_in clearfix">
+			<img src="__TMPL__Public/assets/img/login/1.png" class="pull-left">
+			<div class="pull-right">
+				<!--
+                                <div class="log_in_title clearfix">
+
+                                </div>
+                -->
+				<div class="f">
+					<div class="f__hd log_in_title clearfix">
+						<a class="rborder log_in_title_on"><span>账号登录</span></a>
+						<a class="active log_in_title_on"><span>手机动态密码登录</span></a>
+					</div>
+
+					<div class="f___bd">
+						<!--账号密码登录-->
+						<div class="f__tab">
+							<form  action="{:U('user/login/do_email_login')}" method="post">
+							<div class="col-3">
+								<input name="username" placeholder="账号" class="phonenumber effect-8"/>
+								<span class="focus-border">
+									<i></i>
+								</span>
+							</div>
+							<div class="col-5">
+								<input name="password" placeholder="密码" type="password" class="usercode effect-8" style="width:100%;"/>
+								<span class="focus-border">
+									<i></i>
+								</span>
+							</div>
+							<div class="fc_reg clearfix">
+								<a class="pull-left" href="{:U('user/login/forgot_password')}">忘记密码？</a>
+								<a class="pull-right" href="{:U('user/register/index')}">新用户注册</a>
+							</div>
+							<button type="submit">登录</button>
+							</form>
+						</div>
+						<!--手机账号登录-->
+						<div class="f__tab active">
+							<form  action="{:U('user/login/do_mobile_login')}" method="post">
+							<div class="col-3">
+								<input name="phone" id='mobile' placeholder="手机号码" class="phonenumber effect-8"/>
+								<span class="focus-border">
+									<i></i>
+								</span>
+							</div>
+							<div class="col-4">
+								<input name="password" placeholder="动态密码" class="code effect-8"/>
+								<span class="focus-border">
+									<i></i>
+								</span>
+							</div>
+							<!--<div class="get_code">获取手机动态密码</div>-->
+							<input id="btnSendCode"  class="get_code" style="line-height:22px;font-size: 12px "  type="button" value="获取动态密码" onclick="sendMessage()" />
+							<div class="fc_reg clearfix">
+								<a class="pull-left" href="{:U('user/login/forgot_password')}">忘记密码？</a>
+								<a class="pull-right" href="{:leuu('user/register/index')}">新用户注册</a>
+							</div>
+							<button type="submit">登录</button>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="foot" style="border-top:1px solid transparent">
+	<div class="container">
+		<footer class="g-footer">
+			<div class="g-footer__wrap">
+				<div class="g-footer__a">
+					<p class="g-footer__text">公司地址：杭州市拱墅区</p>
+					<hr style="margin: 10px 0;"/>
+					<p class="g-footer__text">联系电话：0571-8888888　　　版权所有：XXX</p>
+				</div>
+				<div class="g-footer__b"><img class="g-footer__logo" src="__TMPL__Public/assets/img/logo.png" alt=""/></div>
+				<div class="g-footer__c">
+					<hr style="margin-top:4px;"/>
+					<p class="g-footer__slogan">“以敬天之心事人，以求道之心做事”</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+	/*-------------------------------------------*/
+    var InterValObj; //timer变量，控制时间
+    var count = 60; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+    var code = ""; //验证码
+    var codeLength = 4;//验证码长度
+    function sendMessage() {
+        curCount = count;
+        var dealType; //验证方式
+        mobile = $('#mobile').val();
+        if(mobile!=''){
+
+            //验证手机有效性
+            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            if(!myreg.test($('#mobile').val()))
+            {
+                alert('请输入有效的手机号码！');
+                return false;
+            }
+            mobile = $('#mobile').val();
+            //产生验证码
+            for (var i = 0; i < codeLength; i++) {
+                code += parseInt(Math.random() * 9).toString();
+            }
+            //设置button效果，开始计时
+            $("#btnSendCode").attr("disabled", "true");
+            $("#btnSendCode").val("请在" + curCount + "秒内输入验证码");
+            InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+            //向后台发送处理数据
+            $.ajax({
+                type: "POST", //用POST方式传输
+                dataType: "json", //数据格式:JSON
+                url: 'index.php?g=User&m=Login&a=code', //目标地址
+                data: {mobile:mobile,code:code},
+                error: function (xhr, status) { //如果失败，执行
+                    console.log(xhr);   //在控制台显示错误的原因以及返回值
+                    console.log(status);
+                },
+                success: function (data){
+                    console.log(data);
+                }
+            });
+
+        }else{
+            alert('请填写手机号码');
+        }
+
+    }
+    //timer处理函数
+    function SetRemainTime() {
+        if (curCount == 0) {
+            window.clearInterval(InterValObj);//停止计时器
+            $("#btnSendCode").removeAttr("disabled");//启用按钮
+            $("#btnSendCode").val("重新发送验证码");
+            code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+        }
+        else {
+            curCount--;
+            $("#btnSendCode").val("请在" + curCount + "秒内输入验证码");
+        }
+    }
+</script>
+</html>

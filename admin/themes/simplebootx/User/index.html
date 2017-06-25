@@ -1,0 +1,83 @@
+<admintpl file="header" />
+</head>
+<body>
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li class="active"><a>{:L('USER_INDEXADMIN_INDEX')}</a></li>
+	</ul>
+	<form class="well form-search" method="post" action="{:U('Indexadmin/index')}">
+		手机号：
+		<input type="text" name="mobile" style="width: 200px;" value="{:I('request.mobile')}" placeholder="请输入用户手机号">
+		关键字：
+		<input type="text" name="keyword" style="width: 200px;" value="{:I('request.keyword')}" placeholder="用户名/昵称/邮箱">
+		<input type="submit" class="btn btn-primary" value="搜索" />
+		<a class="btn btn-danger" href="{:U('Indexadmin/index')}">清空</a><br>
+	</form>
+</div>
+<form method="post" class="js-ajax-form">
+	<table class="table table-hover table-bordered">
+		<thead>
+		<tr>
+			<th align="center">ID</th>
+			<th>用户名</th>
+			<th>头像</th>
+			<th>手机号</th>
+			<th>邮箱</th>
+			<th>最后登录IP</th>
+			<th>最后登录时间</th>
+			<th>用户状态</th>
+			<th >查看</th>
+			<th align="center">{:L('ACTIONS')}</th>
+		</tr>
+		</thead>
+		<tbody>
+		<php>$user_statuses=array("0"=>L('USER_STATUS_BLOCKED'),"1"=>L('USER_STATUS_ACTIVATED'),"2"=>L('USER_STATUS_UNVERIFIED'));</php>
+		<foreach name="list" item="vo">
+			<tr>
+				<td align="center">{$vo['userid']}</td>
+				<td>{$vo['name']?$vo['name']:L('THIRD_PARTY_USER')}</td>
+				<td>
+					<if condition="empty($vo['avatar'])">
+						<img src="__ROOT__/themes/simplebootx/Public/assets/images/headicon_128.png" class="headicon" style="width: 30px"/>
+						<else/>
+						<img src="__ROOT__/data/upload/{$vo['avatar']}" class="headicon" style="width: 30px" >
+					</if>
+				</td>
+				<td>{$vo['mobile']?$vo['mobile']:L('NOT_FILLED')}</td>
+				<td>
+					{$vo['user_email']|default='未填写' }
+				</td>
+				<td>
+					{$vo['ip']|default='未填写' }
+				</td>
+				<td>
+					{$vo['time']|default='未填写' }
+				</td>
+				<td>
+					{$user_statuses[$vo['user_status']]}
+				</td>
+				<td align="center">
+					<a href="{:U('indexadmin/user_info',array('id'=>$vo['userid']))}" >用户详情</a> |
+					<a href="{:U('indexadmin/order_info',array('user_id'=>$vo['userid']))}" >订单详情</a>
+				</td>
+
+				<td align="center">
+					<neq name="vo.userid" value="1">
+						<a href="{:U('indexadmin/ban',array('id'=>$vo['userid']))}" class="js-ajax-dialog-btn" data-msg="{:L('BLOCK_USER_CONFIRM_MESSAGE')}">拉黑</a>   |
+						<a href="{:U('indexadmin/del_user',array('id'=>$vo['userid']))}" class="js-ajax-delete" >删除</a>
+
+						<else/>
+						<a style="color: #ccc;">拉黑</a>|
+						<a style="color: #ccc;">删除</a>
+					</neq>
+				</td>
+			</tr>
+		</foreach>
+		</tbody>
+	</table>
+	<div class="pagination">{$page}</div>
+</form>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

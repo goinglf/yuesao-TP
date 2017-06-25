@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<link href="__TMPL__Public/assets/css/lib/mdl/material.min.css" rel="stylesheet"/>
+	<script src="__TMPL__Public/assets/js/lib/mdl/material.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	<link href="__TMPL__Public/assets/css/site/header.css" rel="stylesheet"/>
+	<link href="__TMPL__Public/assets/css/site/footer.css" rel="stylesheet"/>
+	<link href="__TMPL__Public/assets/css/site/user/profile.css" rel="stylesheet"/>
+	<link href="__TMPL__Public/assets/css/site/common/base.css" rel="stylesheet"/>
+	<script src="_TMPL__Public/assets/js/lib/jquery/jquery-2.1.3.min.js">   </script>
+	<script src="__TMPL__Public/assets/js/site/profile.js"></script>
+	<title>个人信息</title>
+</head>
+<body>
+<div class="topmost">
+	<div class="topmost__row"><span class="topmost__left">欢迎来到世纪母婴！</span>
+		<div class="topmost__right"><span class="topmost__text">欢迎，{$user_login|default='未填写'}</span><a class="topmost__link" href=""><span class="topmost__text">个人中心</span></a><a class="topmost__link" href=""><span class="topmost__text">退出登录</span></a></div>
+	</div>
+</div>
+<header class="g-header">
+	<div class="g-header__row"><img class="g-header__logo" src="__TMPL__Public/assets/img/header/logo-long.png" alt=""/>
+		<nav class="g-nav"><a class="g-nav__link g-nav__link--active" href=""><span class="g-nav__text">首页</span></a><a class="g-nav__link" href=""><span class="g-nav__text">月嫂展示&预约</span></a><a class="g-nav__link" href=""><span class="g-nav__text">智能匹配月嫂</span></a><a class="g-nav__link" href=""><span class="g-nav__text">关于我们</span></a><a class="g-nav__link" href=""><span class="g-nav__text">联系我们</span></a></nav>
+	</div>
+</header>
+<div class="main">
+	<div class="container">
+		<div class="breadcrumb"><a class="breadcrumb__link" href="">首页</a><span class="breadcrumb__seperator">&gt;</span><a class="breadcrumb__link" href="">个人中心</a><span class="breadcrumb__seperator">&gt;</span><a class="breadcrumb__link" href="">个人信息</a></div>
+		<div class="pannel-container">
+			<aside class="row-1">
+				<div class="stupid pannel">
+					<if condition="empty($avatar)">
+					<img class="stupid__avatar" src="__TMPL__Public/assets/img/headicon_128.png" class="headicon"/>
+					<else/>
+					<img class="stupid__avatar" src="{:sp_get_user_avatar_url($avatar)}" class="headicon"/><br>
+				</if>
+					<h5 class="stupid__nickname">{$user_nicename|default='未填写'} <span class="stupid__vip-grade">V<sub>0</sub></span></h5>
+				</div>
+				<ul class="menu-list pannel">
+					<li class="menu"><a class="menu__link" href="">我的订单</a></li>
+					<li class="menu"><a class="menu__link" href="">我的收藏</a></li>
+					<li class="menu"><a class="menu__link" href="">浏览历史</a></li>
+				</ul>
+			</aside>
+			<div class="row-2">
+				<div class="edit-profile pannel">
+					<h4 class="edit-profile__title">个人信息</h4>
+					<form class="profile-form" action="" method="POST">
+						<div class="profile-form__row profile-form__row--high" style="height: 50px">
+							<label class="profile-form__lbl" >当前头像：</label>
+						</div>
+						<div class="container tc-main">
+										<div class="tab-content">
+											<div class="tab-pane active" id="one">
+												<if condition="empty($avatar)">
+													<img src="__TMPL__Public/assets/img/headicon_128.png" class="headicon"/>
+													<else/>
+													<img src="{:sp_get_user_avatar_url($avatar)}?t={:time()}" class="headicon"/>
+												</if>
+												<br>
+												<input type="file" onchange="avatar_upload(this)" id="avatar_uploder"  name="file"/>
+												<div class="uploaded_avatar_area">
+
+													<div class="uploaded_avatar_btns">
+														<button class="profile-form__submit" style="width: 50px;margin-left: 100px" onclick="update_avatar()">确定</button>
+														<button class="profile-form__submit" style="width: 50px;margin-left: 30px" onclick="reloadPage()">取消</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+						</div>
+						<!-- /container -->
+
+						<tc_include file="Public:scripts" />
+						<script type="text/javascript">
+                            function update_avatar(){
+                                var area=$(".uploaded_avatar_area img").data("area");
+                                $.post("{:U('profile/avatar_update')}",area,
+                                    function(data){
+                                        if(data.status==1){
+                                            reloadPage(window);
+                                        }
+
+                                    },"json");
+
+                            }
+                            function avatar_upload(obj){
+                                var $fileinput=$(obj);
+								/* $(obj)
+								 .show()
+								 .ajaxComplete(function(){
+								 $(this).hide();
+								 }); */
+                                Wind.css("jcrop");
+                                Wind.use("ajaxfileupload","jcrop","noty",function(){
+                                    $.ajaxFileUpload({
+                                        url:"{:U('profile/avatar_upload')}",
+                                        secureuri:false,
+                                        fileElementId:"avatar_uploder",
+                                        dataType: 'json',
+                                        data:{},
+                                        success: function (data, status){
+                                            if(data.status==1){
+                                                $("#avatar_uploder").hide();
+                                                var $uploaded_area=$(".uploaded_avatar_area");
+                                                $uploaded_area.find("img").remove();
+                                                var src= "__UPLOAD__avatar/"+data.data.file;
+                                                var $img=$("<img/>").attr("src",src);
+                                                $img.prependTo($uploaded_area);
+                                                $(".uploaded_avatar_btns").show();
+                                                var img = new Image();
+                                                img.src=src;
+
+                                                var callback=function(){
+                                                    console.log(img.width);
+                                                    $img.Jcrop({
+                                                        aspectRatio:1,
+                                                        trueSize: [img.width,img.height],
+                                                        setSelect: [ 0, 0, 100, 100 ],
+                                                        onSelect: function(c){
+                                                            $img.data("area",c);
+                                                        }
+                                                    });
+                                                }
+
+                                                if(img.complete){
+                                                    callback();
+                                                }else{
+                                                    img.onload=callback;
+                                                }
+
+                                            }else{
+                                                noty({text: data.info,
+                                                    type:'error',
+                                                    layout:'center'
+                                                });
+                                            }
+
+                                        },
+                                        error: function (data, status, e){}
+                                    });
+                                });
+
+
+
+                                return false;
+                            }
+						</script>
+</body>
+</html>

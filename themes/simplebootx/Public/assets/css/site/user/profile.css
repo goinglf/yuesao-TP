@@ -1,0 +1,149 @@
+.breadcrumb {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px; }
+
+.breadcrumb__link {
+  font-size: 16px;
+  color: #333; }
+
+.breadcrumb__seperator {
+  margin: 0 8px; }
+
+.pannel-container {
+  display: flex;
+  align-items: flex-start; }
+
+.row-1 {
+  width: 278px; }
+
+.stupid {
+  height: 234px;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #333; }
+
+.stupid__avatar {
+  width: 114px;
+  height: 114px;
+  border-radius: 50%; }
+
+.stupid__nickname {
+  height: 16px;
+  color: #333;
+  font-weight: normal;
+  margin-top: 28px; }
+
+.stupid__vip-grade {
+  width: 28px;
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  background-color: #ffb696;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: top; }
+
+.menu-list {
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px; }
+
+.menu {
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center; }
+
+.menu__link {
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  color: #333; }
+
+.row-2 {
+  margin-left: 32px;
+  width: 758px;
+  margin-bottom: 56px; }
+
+.edit-profile {
+  height: 870px;
+  padding: 18px 0 0 40px;
+  font-size: 16px; }
+
+.edit-profile__title {
+  font-size: 20px;
+  margin: 0; }
+
+.profile-form__row {
+  height: 65px;
+  display: flex;
+  align-items: center; }
+
+.profile-form__row.profile-form__row--high {
+  height: 148px;
+  margin-top: 56px;
+  align-items: flex-start; }
+
+.uploader {
+  display: flex;
+  align-items: flex-end; }
+
+.uploader__preview {
+  width: 146px;
+  height: 146px;
+  margin-left: 70px; }
+
+.uploader__upload {
+  width: 130px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  text-align: center;
+  display: inline-block;
+  margin-left: 16px; }
+
+.profile-form__lbl {
+  width: 82px;
+  text-align: right;
+  font-size: 16px; }
+
+.profile-form__input {
+  width: 302px;
+  height: 40px;
+  margin-left: 70px;
+  border: 1px solid #cbcdce;
+  padding-left: 8px;
+  font-size: 16px; }
+
+.profile-form__radio-wrap {
+  margin-left: 70px; }
+
+.profile-form__submit {
+  background-color: #ffb696;
+  color: white;
+  font-size: 18px;
+  border-radius: 4px;
+  width: 176px;
+  height: 40px;
+  line-height: 40px;
+  border: none; }
+
+.error-msg {
+  padding-left: 152px; }
+
+.error-msg__text {
+  color: #f97676;
+  font-size: 14px; }
+
+.profile-form__submit {
+  margin-left: 152px; }

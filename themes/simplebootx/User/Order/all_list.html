@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="__TMPL__Public/assets/css/lib/mdl/material.min.css" rel="stylesheet"/>
+    <script src="__TMPL__Public/assets/js/lib/mdl/material.min.js"></script>
+    <link href="__TMPL__Public/assets/css/site/header.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/site/footer.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/site/user/my-order.css" rel="stylesheet"/>
+    <link href="__TMPL__Public/assets/css/site/common/base.css" rel="stylesheet"/>
+    <title>我的订单</title>
+</head>
+
+<body>
+<div class="topmost">
+    <div class="topmost__row">
+        <span class="topmost__left">欢迎来到世纪母婴！</span>
+        <div class="topmost__right">
+            <span>欢迎，
+				{$_SESSION['user']['user_login'] |default='游客'}
+			</span>
+            <a href="{:U('user/center/index')}">　|　个人中心　|　</a>
+            <if condition=" $_SESSION['user']['user_login']  neq '' ">
+                <a href="{:U('user/index/logout')}">退出登录</a>
+                <else/>
+                <a href="{:leuu('user/login/index')}">登录</a>
+
+            </if>
+        </div>
+    </div>
+</div>
+<header class="g-header">
+    <div class="g-header__row"><img class="g-header__logo" src="__TMPL__Public/assets/img/header/logo-long.png" alt=""/>
+        <nav class="g-nav">
+            <a class="g-nav__link" href="index.html">
+                <span class="g-nav__text">首页</span></a>
+            <a class="g-nav__link" href="{:U('yuesao/list/index')}"><span class="g-nav__text">月嫂展示&预约</span></a>
+            <a class="g-nav__link" href="{:U('yuesao/list/all_list')}"><span class="g-nav__text">智能匹配月嫂</span></a>
+            <a class="g-nav__link" href="{:U('Ourinfo/index/about')}"><span class="g-nav__text">关于我们</span></a>
+            <a class="g-nav__link" href="{:U('Ourinfo/index/contact')}"><span class="g-nav__text">联系我们</span></a>
+        </nav>
+    </div>
+</header>
+<div class="main" style="padding-bottom: 80px;">
+    <div class="container">
+        <div class="breadcrumb"><a class="breadcrumb__link" href="">首页</a><span class="breadcrumb__seperator">&gt;</span><a class="breadcrumb__link" href="">个人中心</a><span class="breadcrumb__seperator">&gt;</span><a class="breadcrumb__link" href="">浏览历史</a></div>
+        <div class="pannel-container">
+            <aside class="row-1">
+                <div class="stupid pannel">
+                    <if condition="empty($avatar)">
+                        <img class="stupid__avatar" src="__TMPL__Public/assets/img/headicon_128.png" class="headicon"/>
+                        <else/>
+                        <img class="stupid__avatar" src="{:sp_get_user_avatar_url($avatar)}" class="headicon"/><br>
+                    </if>
+                    <h5 class="stupid__nickname">{$user_login|default='未填写'} <span class="stupid__vip-grade">V<sub>0</sub></span></h5>
+                </div>
+                <ul class="menu-list pannel">
+                    <li class="menu menu--active"><a class="menu__link" href="{:U('user/order/all_list')}">我的订单</a></li>
+                    <li class="menu"><a class="menu__link" href="">我的收藏</a></li>
+                    <li class="menu"><a class="menu__link" href="">浏览历史</a></li>
+                </ul>
+            </aside>
+            <div class="row-2">
+                <div class="order-panel pannel">
+                    <div class="order-panel__hd">
+                        <div class="controls-wrap">
+                            <div class="o-control o-control--active"><a class="o-control__link" href="{:U('user/order/all_list')}">所有订单</a></div>
+                            <div class="o-control"><a class="o-control__link" href="{:U('user/order/is_deposit',array('status'=>1))}">代付定金</a></div>
+                            <div class="o-control"><a class="o-control__link" href="{:U('user/order/is_balance',array('status'=>2))}">待付尾款</a></div>
+                            <div class="o-control"><a class="o-control__link" href="{:U('user/order/is_comments',array('status'=>3))}">待评价</a></div>
+                        </div>
+                    </div>
+                    <div class="order-panel__bd">
+
+                        <div class="order-list">
+                            <foreach name="order" item="v">
+                            <div class="order">
+                                <div class="order__hd"><span class="order__datetime">{$v.create_at}</span>&nbsp;<span class="order__number">订单号：{$v.order_name}</span></div>
+                                <div class="order__main"><img class="order__img" src="__TMPL__Public/assets/img/user/nurse-a.png" alt=""/><span class="order__text">{$v.name}</span>
+                                    <php>$v['sum']=$v['balance']+$v['deposit'];</php>
+                                    <span class="order__text order__text--em">¥ {$v['sum']}</span>
+                                    <div class="order__col">
+                                        <php>$status=array("0"=>L('已关闭'),"1"=>L('待付定金'),"2"=>L('待付尾款'),"3"=>L('待评价'),"4"=>L('已完成'));</php>
+                                        <span class="order__text order__text--em">{$status[$v[order_status]]}</span>
+
+                                        <a class="order__text" href="{:U('user/order/order_info',array('id'=>$v['oid']))}">订单详情</a></div>
+                                    <php>$action=array("0"=>L('已关闭'),"1"=>L('付款'),"2"=>L('付款'),"3"=>L('评价'),"4"=>L('已完成'));</php>
+                                    <if condition="$v.order_status eq 0 || $v.order_status eq 4">
+                                    <a class="order__action"  disabled="true" style="background-color: #ccc">{$action[$v[order_status]]}</a>
+                                        <else/>
+                                        <if condition="$v.order_status eq 3 ">
+                                            <a class="order__action" href="{:U('user/order/order_comment',array('id'=>$v['oid']))}" >{$action[$v[order_status]]}</a>
+                                            <else/>
+                                            <a class="order__action" href="{:U('user/order/pay_order',array('id'=>$v['oid']))}" >{$action[$v[order_status]]}</a>
+                                        </if>
+                                    </if>
+                                </div>
+                            </div>
+                        </foreach>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagnation pannel pagnation__p color" style="border-top:none;">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="g-footer">
+    <div class="g-footer__wrap">
+        <div class="g-footer__a">
+            <p class="g-footer__text">公司地址：杭州市拱墅区</p>
+            <hr style="margin: 10px 0;"/>
+            <p class="g-footer__text">联系电话：0571-8888888　　　版权所有：XXX</p>
+        </div>
+        <div class="g-footer__b"><img class="g-footer__logo" src="__TMPL__Public/assets/img/logo.png" alt=""/></div>
+        <div class="g-footer__c">
+            <hr style="margin-top:4px;"/>
+            <p class="g-footer__slogan">“以敬天之心事人，以求道之心做事”</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

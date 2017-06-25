@@ -1,0 +1,71 @@
+<admintpl file="header" />
+</head>
+<style>
+
+</style>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs" style="padding-bottom: 20px">
+        <li class="active"><a>所有订单</a></li>
+    </ul>
+    <form class="well form-search" method="post" action="{:U('Indexadmin/order_info',array('user_id'=>$id))}">
+        预产期开始时间：
+        <input type="text"  style="width: 100px;" name="childbirth_start" value="{:I('request.childbirth_start')}" class="js-date" >
+        结束时间：
+        <input type="text"  style="width: 100px;" name="childbirth_end" value="{:I('request.childbirth_end')}" class="js-date">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        服务开始时间：
+        <input type="text"  style="width: 100px;"  name="serve_start" value="{:I('request.serve_start')}" class="js-date">
+        结束时间：
+        <input type="text"  style="width: 100px;" name="serve_end" value="{:I('request.serve_end')}" class="js-date">
+        <input type="submit" class="btn btn-primary" value="筛选" />
+        <a class="btn btn-danger" href="{:U('Indexadmin/order_info')}">清空</a>
+    </form>
+</div>
+    <form method="post" class="js-ajax-form">
+        <table class="table table-hover table-bordered">
+            <thead >
+            <tr>
+                <th >ID</th>
+                <th>用户</th>
+                <th>月嫂</th>
+                <th>金额</th>
+                <th>状态</th>
+                <th>留言</th>
+                <th>地址</th>
+                <th>预产期</th>
+                <th>服务期</th>
+                <th>下单时间</th>
+                <th>是否删除</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <foreach name="order" item="vo">
+                <tr>
+                    <td align="center">{$vo.id}</td>
+                    <td>{$vo.user_login}</td>
+                    <td>{$vo.name}</td>
+                    <php>$vo['sum']=$vo['balance']+$vo['deposit'];</php>
+                    <td>{$vo['sum']}</td>
+                    <php>$status=array("0"=>L('已关闭订单'),"1"=>L('未付定金'),"2"=>L('未付余款'),"3"=>L('未评价'),"4"=>L('已完成'));</php>
+                    <td>{$status[$vo[order_status]]}</td>
+                    <td >{$vo.leave_message|default='无'}</td>
+                    <td >{$vo.address|default='未填写'}</td>
+                    <td>{$vo.childbirth_start}~{$vo.childbirth_end}</td>
+                    <td>{$vo.serve_start}~{$vo.serve_end}</td>
+                    <td>{$vo['create_at']}</td>
+                    <td>{$vo['is_del']==0?'已删除':'未删除'}</td>
+                    <td align="center">
+                        <a href="{:U('indexadmin/del_order',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+
+                    </td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+        <div class="pagination">{$page}</div>
+    </form>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+</body>

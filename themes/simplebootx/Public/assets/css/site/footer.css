@@ -1,0 +1,37 @@
+.g-footer {
+  background-color: white;
+  border-top: 1px solid #e0e0e0;
+  height: 272px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333; }
+
+.g-footer__wrap {
+  width: 1000px;
+  height: 72px;
+  margin: 0 auto;
+  display: flex; }
+
+.g-footer__a, .g-footer__c {
+  flex: 1; }
+
+.g-footer__text {
+  margin: 0;
+  padding-left: 62px;
+  font-size: 14px; }
+
+.g-footer__b {
+  width: 85px;
+  justify-content: center;
+  display: flex; }
+
+.g-footer__logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; }
+
+.g-footer__slogan {
+  font-size: 20px;
+  padding-left: 36px;
+  margin-top: 20px; }

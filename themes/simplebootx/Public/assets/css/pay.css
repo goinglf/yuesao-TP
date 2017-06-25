@@ -1,0 +1,104 @@
+.log_content1{
+	height:29px;
+	line-height:29px;
+	 overflow:hidden;
+}
+.log_content1_left{font-size:12px;color:#333;}
+.log_content1_right{float:right;font-size:12px;color:#333;}
+.log_content1_right a{color:#333;}
+a:hover, a:visited,a:active {
+   text-decoration: none;
+   color: #333;
+}
+.log_content2{background-color:#ffb696;width:100%;}
+.log_content2_img{margin:15px 0;}
+.log_content2_nav li{float:right;list-style-type:none;width:20%;text-align: center;border-right:1px solid #fff;margin:40px 0;font-size:20px;}
+.log_content2_nav a{color:#fff;}
+.log_content2_nav a:hover{font-weight: bold;border-bottom:1px solid #fff;padding-bottom:10px;}
+.active a{font-weight: bold;border-bottom:1px solid #fff;padding-bottom:10px;}
+.log_bgcolor{background-color:#fef6ed;}
+.log_banner{position: relative;}
+.log_banner_icon{position: absolute;width:100%;text-align: center;z-index:999;}
+.swiper-pagination-bullet{border-radius: 50%;border:1px solid #333;width:20px;height:20px;list-style-type:none;margin-right:30px;display: inline-block;}
+.log_title{padding:0 307px;height:80px;line-height: 80px;background-color:#fff;margin-top:20px;}
+.log_title ul{padding-left:0px;}
+.log_title ul li{list-style:none;display: inline-block;width:32%;text-align: center;font-size:20px;}
+/*.log_title ul li:hover{border-bottom:1px solid #ffb696;}*/
+.log_title ul .on{border-bottom:1px solid #ffb696;font-weight:bold;}
+.log_title ul li a{color:#333;}
+ .log_title ul li a:hover{ text-decoration:none;} 
+.g-footer{
+    background-color: white;
+    height: 272px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333333;
+}
+.g-footer__wrap{
+    width: 1000px;
+    height: 72px;
+    margin: 0 auto;
+    display: flex;
+}
+.g-footer__a, .g-footer__c{
+    flex: 1;
+}
+.g-footer__text{
+    margin: 0;
+    padding-left: 62px;
+    font-size: 14px;
+}
+.g-footer__b{
+    width: 85px;
+    justify-content: center;
+    display: flex;
+}
+.g-footer__logo{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.g-footer__slogan{
+    font-size: 20px;
+    padding-left: 36px;
+    margin-top: 20px;
+}
+.oder_toplist{margin:20px 0;padding:18px 0 18px 19px;background-color:#fff;}
+.oder_toplist span{font-size:16px;color:#333;}
+.oder_toplist .pd_left{padding-left:100px;}
+.oder_content{background-color:#fff;margin-bottom:27px;height:561px;padding-top:0px;padding-bottom:57px;position: relative;}
+.oder_content .oder_line{background:#ffb696;height:30px;}
+.oder_content .oder_head{position: absolute;left:19px;top:0;width:160px;height:160px;}
+.oder_content .oder_ul1{margin-top:13px;margin-left:197px;}
+.oder_content .oder_ul1 li{font-size:16px;color:#333;display: inline-block;text-align: left;}
+.oder_content .oder_ul1 .oder_li1, .oder_li2{width:202px;}
+.oder_content .oder_ul1 .oder_li2{color:#ffb696;}
+.oder_content .oder_ul1 .oder_li3{width:235px; margin-top: 50px}
+.oder_content .oder_ul2{margin-top:123px;margin-left:102px;margin-bottom:19px;}
+.oder_content .oder_ul2 li{height:24px;line-height:24px;color:#333;display: inline-block;text-align: left;}
+.oder_content .oder_ul2 .oder_li1{font-size:24px;font-weight: bold;width:380px;}
+.oder_content .oder_ul2 .oder_li2, .oder_li3{font-size:16px;}
+.oder_content .oder_ul2 .oder_li2{width:482px;}
+.oder_content .oder_ul2 .oder_li3{color:#ffb696;}
+.oder_content .oder_p1{font-size:16px;color:#333;font-weight: bold;margin-left:102px;margin-bottom:41px;}
+.oder_content .oder_pay{border:1px solid #ccc;margin:0 100px;height:100px;line-height: 100px;margin-bottom:39px;}
+.oder_content .oder_button{font-size:18px;color:#333;border:1px solid #ccc;border-radius: 5px;background-color:#fff;padding:16.5px 92.5px;}
+input[type="radio"] {
+  position: absolute;
+  left: -99999px; }
+
+input[type="radio"]:checked + label:before {
+  background:url(../img/pay/icon2.png) no-repeat;
+  background-size: 16px; }
+
+input[type="radio"] + label:before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background:url(../img/pay/icon1.png) no-repeat;
+  background-size: 16px;
+  margin-right: 12px;
+  margin-left: 50px;	
+  vertical-align: middle; }

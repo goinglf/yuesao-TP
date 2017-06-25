@@ -1,0 +1,87 @@
+request body = <TemplateSMS>
+                    <to>15381483141</to> 
+                    <appId>8a216da85c62c9ad015c86ead06d0e2e</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a216da85c62c9ad015c86eacf120e28/SMS/TemplateSMS?sig=288DC56841763999FA344AE38E11BEB9
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>112310</statusCode>
+    <statusMsg>【短信】应用未上线，模板短信接收号码外呼受限</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15068226186</to> 
+                    <appId>8a216da85c62c9ad015c86ead06d0e2e</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a216da85c62c9ad015c86eacf120e28/SMS/TemplateSMS?sig=AF2834CC5EBCEBC1032E94FCB51A20C3
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>112310</statusCode>
+    <statusMsg>【短信】应用未上线，模板短信接收号码外呼受限</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15381483141</to> 
+                    <appId>8a216da85c62c9ad015c86ead06d0e2e</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a216da85c62c9ad015c86eacf120e28/SMS/TemplateSMS?sig=8E0C428D2FFC4426D7B47557315CC903
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>112310</statusCode>
+    <statusMsg>【短信】应用未上线，模板短信接收号码外呼受限</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15381483141</to> 
+                    <appId>8a216da85c62c9ad015c86ead06d0e2e</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a216da85c62c9ad015c86eacf120e28/SMS/TemplateSMS?sig=20170188195CAFC2EF524455FB24D905
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>fe30f831c563461fae8f78ea7ff900dd</smsMessageSid>
+        <dateCreated>20170608195135</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15381483141</to> 
+                    <appId>8a216da85c62c9ad015c86ead06d0e2e</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a216da85c62c9ad015c86eacf120e28/SMS/TemplateSMS?sig=2EBE86612531AD8B5CD9AB69B090B120
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>8f51d77185184b91b0d58908c185d61b</smsMessageSid>
+        <dateCreated>20170608201758</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15381483141</to> 
+                    <appId>8a216da85c62c9ad015c86ead06d0e2e</appId>
+                    <templateId>1</templateId>
+                    <datas><data>2066</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://sandboxapp.cloopen.com:8883/2013-12-26/Accounts/8a216da85c62c9ad015c86eacf120e28/SMS/TemplateSMS?sig=1626AB37CC679BFC5D26A2C555CC56CB
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>a28dfb2c2fc74772837c7ea6b8f5bc32</smsMessageSid>
+        <dateCreated>20170609132535</dateCreated>
+    </TemplateSMS>
+</Response>
+
